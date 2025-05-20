@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Videos = ({ nextStep }: { nextStep: () => void }) => {
   return (
     <div className='z-101 '>
