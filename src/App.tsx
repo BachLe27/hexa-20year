@@ -1,8 +1,7 @@
-import './App.css'
+import './App.css';
 import AvatarGenerate from './components/AvatarGenerate';
-import Landing from './components/Landing'
-import Videos from './components/Videos';
-import './style.scss'
+import Landing from './components/Landing';
+import './style.scss';
 
 import { useState } from 'react';
 function App() {
@@ -11,14 +10,11 @@ function App() {
 
   return (
     <>
-      <div className="gradient-bg">
+      <div className="gradient-bg" style={{ height: step === 1 ? '100%' : '100vh', width: step === 1 ? '100%' : '100vw' }}>
         {step === 0 && (
           <Landing nextStep={() => setStep(1)} />
         )}
         {step === 1 && (
-          <Videos nextStep={() => setStep(2)} />
-        )}
-        {step === 2 && (
           <AvatarGenerate />
         )}
         <svg className='svg' xmlns="http://www.w3.org/2000/svg">
