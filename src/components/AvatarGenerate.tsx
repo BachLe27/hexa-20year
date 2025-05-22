@@ -11,6 +11,8 @@ import frameCard from '../assets/frame-card.png';
 import FinalResult from './FinalResult';
 
 const AvatarGenerate = () => {
+
+
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [finalAvatarImage, setFinalAvatarImage] = useState<string | null>(null);
   const [finalCardImage, setFinalCardImage] = useState<string | null>(null);
@@ -254,20 +256,20 @@ const AvatarGenerate = () => {
     ctx.drawImage(loadedImagesRef.current.frameCard, 0, 0, 1000, 1800);
 
     if (userName) {
-      ctx.font = 'italic bold 64px Inter';
+      ctx.font = 'italic bold 62px Montserrat';
       ctx.fillStyle = 'white';
-      ctx.textAlign = 'left';
-      ctx.fillText(userName, 344, 1044);
+      ctx.textAlign = 'center';
+      ctx.fillText(userName, 492, 990);
     }
 
     if (joinDate) {
       const currentDate = new Date();
       const hourDiff = 24 * Number(differenceInDays(currentDate, joinDate));
 
-      ctx.font = 'italic bold 96px Inter';
+      ctx.font = 'italic bold 96px Montserrat';
       ctx.fillStyle = 'white';
       ctx.textAlign = 'center';
-      ctx.fillText(`${hourDiff > 0 ? hourDiff : 0} giờ`, 484, 1280);
+      ctx.fillText(`${hourDiff > 0 ? hourDiff : 0} giờ`, 504, 1200);
     }
     setFinalCardImage(canvas.toDataURL('image/png', 1.0));
   }, [cardPosition, userName, joinDate]);
@@ -284,7 +286,7 @@ const AvatarGenerate = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={vi}>
-      <Stack zIndex={101} py={4} alignItems='center' justifyContent='center' width='100vw' overflow='hidden' minHeight='100vh'>
+      <Stack fontFamily='Montserrat' zIndex={101} py={4} alignItems='center' justifyContent='center' width='100vw' overflow='hidden' minHeight='100vh'>
         <Stack gap={10} direction={{ xs: 'column', md: 'row' }}>
           {!isSubmit && (
             <>

@@ -23,13 +23,13 @@ const FinalResult = ({ finalAvatarImage, finalCardImage, handleBack }: FinalResu
   }
 
   const handleShareAvatar = () => {
+    window.open('https://www.facebook.com', '_blank');
     handleDownloadAvatar();
-    window.open('https://www.facebook.com' + finalAvatarImage, '_blank');
   }
 
   const handleShareCard = () => {
+    window.open('https://www.facebook.com', '_blank');
     handleDownloadCard();
-    window.open('https://www.facebook.com' + finalCardImage, '_blank');
   }
 
 

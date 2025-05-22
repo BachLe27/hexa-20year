@@ -98,9 +98,9 @@ const Landing = ({ nextStep }: { nextStep: () => void }) => {
         isStart && (
           <div>
             <div className="flex flex-col gap-2 items-center text-center font-unbounded text-white text-2xl text-xl sm:text-3xl md:text-3xl lg:text-5xl font-semibold z-10">
-              <span className='block md:hidden'>CHÀO MỪNG</span>
-              <span className='block md:hidden'>ĐẾN VỚI HEXA 20 NĂM</span>
-              <span className='hidden md:block'>CHÀO MỪNG ĐẾN VỚI HEXA 20 NĂM</span>
+              <span style={{ fontFamily: 'Montserrat !important' }} className='block md:hidden'>CHÀO MỪNG</span>
+              <span style={{ fontFamily: 'Montserrat !important' }} className='block md:hidden'>ĐẾN VỚI HEXA 20 NĂM</span>
+              <span style={{ fontFamily: 'Montserrat !important' }} className='hidden md:block'>CHÀO MỪNG ĐẾN VỚI HEXA 20 NĂM</span>
               <span>TỪ TÂM VƯƠN TẦM</span>
             </div>
 
