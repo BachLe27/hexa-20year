@@ -21,7 +21,7 @@ const Videos = ({ nextStep }: { nextStep: () => void }) => {
         height: '100vh'
       }}>
         <video onEnded={handleEnded} ref={videoRef} className="z-150 h-[100vh] w-full" autoPlay>
-          <source src='/0522.mp4' type="video/mp4" />
+          <source src='https://res.cloudinary.com/dgb3rlecg/video/upload/v1747883766/s55r5h8u0jhl9pxmvrbd.mp4' type="video/mp4" />
           Your browser does not support HTML video.
         </video>
       </div>
