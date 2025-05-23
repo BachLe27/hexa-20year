@@ -74,21 +74,21 @@ const Landing = ({ nextStep }: { nextStep: () => void }) => {
   }, [numberOfAnimationsComplete]);
 
   return (
-    <div className='z-10 flex flex-col items-center gap-16'>
+    <div className='flex flex-col items-center gap-12'>
       <div className='flex flex-col flex-1 w-full items-center mt-6'>
-        <img className='max-w-[180px] md:max-w-[230px]' src={logo} alt="logo" />
+        <img className='w-54 sm:w-54 md:w-70 h-auto' src={logo} alt="logo" />
       </div>
       {
         !isStart && (
           <div className={`flex flex-col flex-1 w-full items-center transition-opacity duration-500 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
-            <img className='max-w-[300px] md:max-w-[400px]' src={logo2} alt="logo2" />
+            <img className='w-[90vw] sm:w-[50vh] sm:h-[25vh] md:w-[60vh] md:h-[30vh] lg:w-[70vh] lg:h-[35vh] xl:w-[80vh] xl:h-[40vh] 2xl:w-[90vh] 2xl:h-[45vh] object-contain' src={logo2} alt="logo2" />
           </div>
         )
       }
       {
         !isStart && (
-          <div className={`gradient-box transition-opacity duration-500 ${isFading ? 'opacity-0' : 'opacity-100'}`} onClick={handleStart}>
-            <button className='cursor-pointer text-white font-bold bg-gradient-to-r from-[#D9442B] to-[#B91F32] text-2xl rounded-4xl px-20 md:px-30 py-3 z-101'>
+          <div className={`z-1 gradient-box transition-opacity duration-500 ${isFading ? 'opacity-0' : 'opacity-100'}`} onClick={handleStart}>
+            <button className='z-2 cursor-pointer text-white font-bold bg-gradient-to-r from-[#D9442B] to-[#B91F32] text-2xl rounded-4xl px-20 md:px-30 py-3'>
               Bắt đầu
             </button>
           </div>
@@ -97,14 +97,14 @@ const Landing = ({ nextStep }: { nextStep: () => void }) => {
       {
         isStart && (
           <div>
-            <div className="flex flex-col gap-2 items-center text-center font-unbounded text-white text-2xl text-xl sm:text-3xl md:text-3xl lg:text-5xl font-semibold z-10">
+            <div className="flex flex-col gap-2 items-center text-center font-unbounded text-white text-2xl text-xl sm:text-3xl md:text-3xl lg:text-5xl font-semibold">
               <span style={{ fontFamily: 'Montserrat !important' }} className='block md:hidden'>CHÀO MỪNG</span>
               <span style={{ fontFamily: 'Montserrat !important' }} className='block md:hidden'>ĐẾN VỚI HEXA 20 NĂM</span>
               <span style={{ fontFamily: 'Montserrat !important' }} className='hidden md:block'>CHÀO MỪNG ĐẾN VỚI HEXA 20 NĂM</span>
               <span>TỪ TÂM VƯƠN TẦM</span>
             </div>
 
-            <div className="w-[100%] bg-transparent rounded-lg mt-4 h-72 relative overflow-hidden z-10">
+            <div className="w-[100%] bg-transparent rounded-lg mt-4 h-72 relative overflow-hidden">
               <div className="flex flex-col gap-4 justify-center items-center">
                 <div className="relative justify-center items-center my-auto top-16">
                   <div className="flex items-center">
@@ -126,7 +126,7 @@ const Landing = ({ nextStep }: { nextStep: () => void }) => {
                           return (
                             <motion.div
                               key={year}
-                              className={`z-10 text-[48px] antialiased  text-[#b91f32] text-shadow font-extrabold text-center items-center justify-center flex transition-all duration-500`}
+                              className={`text-[48px] antialiased  text-[#b91f32] text-shadow font-extrabold text-center items-center justify-center flex transition-all duration-500`}
                               initial={{
                                 scale: 0.5,
                               }}
@@ -146,7 +146,7 @@ const Landing = ({ nextStep }: { nextStep: () => void }) => {
                           return (
                             <motion.div
                               key={year}
-                              className={`z-10 text-[48px] antialiased text-[#b91f32] text-shadow font-extrabold text-center items-center justify-center flex transition-all duration-500`}
+                              className={`text-[48px] antialiased text-[#b91f32] text-shadow font-extrabold text-center items-center justify-center flex transition-all duration-500`}
                               initial={{
                                 scale: 1.205,
                               }}
@@ -166,7 +166,7 @@ const Landing = ({ nextStep }: { nextStep: () => void }) => {
                         return (
                           <motion.div
                             key={year}
-                            className={`z-10 text-[48px] antialiased text-[#b91f32] text-shadow font-extrabold text-center items-center justify-center flex transition-all duration-500`}
+                            className={`text-[48px] antialiased text-[#b91f32] text-shadow font-extrabold text-center items-center justify-center flex transition-all duration-500`}
                             initial={{
                               scale: 0.8,
                             }}

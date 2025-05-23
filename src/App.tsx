@@ -1,10 +1,11 @@
 import './App.css';
-import AvatarGenerate from './components/AvatarGenerate';
-import Landing from './components/Landing';
-import Videos from './components/Videos';
+import { lazy, useState } from 'react';
+const Landing = lazy(() => import('./components/Landing'));
+const Videos = lazy(() => import('./components/Videos'));
 import './style.scss';
+import AvatarGenerate from './components/AvatarGenerate';
+import PreloadImages from './components/PreloadImages';
 
-import { useState } from 'react';
 function App() {
 
   const [step, setStep] = useState(0);
@@ -12,15 +13,19 @@ function App() {
   return (
     <>
       <div className="gradient-bg" style={{ height: step === 2 ? '100%' : '100vh', width: step === 2 ? '100%' : '100vw' }}>
-        {step === 0 && (
-          <Landing nextStep={() => setStep(1)} />
-        )}
-        {step === 1 && (
-          <Videos nextStep={() => setStep(2)} />
-        )}
-        {step === 2 && (
-          <AvatarGenerate />
-        )}
+
+        <div className='z-10 relative'>
+          <PreloadImages />
+          {step === 0 && (
+            <Landing nextStep={() => setStep(1)} />
+          )}
+          {step === 1 && (
+            <Videos nextStep={() => setStep(2)} />
+          )}
+          {step === 2 && (
+            <AvatarGenerate />
+          )}
+        </div>
         <svg className='svg' xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter id="goo">

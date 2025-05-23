@@ -38,12 +38,14 @@ const FinalResult = ({ finalAvatarImage, finalCardImage, handleBack }: FinalResu
       <Stack alignItems='center' justifyContent='center' gap={2}>
         <Stack flexDirection={{ xs: 'column', md: 'row' }} alignItems='center' justifyContent='center' gap={{ xs: 10, md: 30 }}>
           <Stack alignItems='center' justifyContent='center' gap={3}>
-            <img
-              className='md:w-[35vh] w-[50vw] rounded-2xl'
-              src={finalAvatarImage}
-              alt="frame-avatar"
-              draggable={false}
-            />
+            <div className='border-2 border-white rounded-2xl'>
+              <img
+                className='md:w-[35vh] w-[50vw] rounded-2xl'
+                src={finalAvatarImage}
+                alt="frame-avatar"
+                draggable={false}
+              />
+            </div>
             <Stack gap={1} display={{ xs: 'flex', md: 'none' }}>
               <button
                 onClick={handleDownloadAvatar}
