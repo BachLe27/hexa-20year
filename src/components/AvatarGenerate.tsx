@@ -1,8 +1,8 @@
-import { Stack, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Slider, Stack, SvgIcon, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { CalendarBlankIcon, ImageIcon, UserIcon } from '@phosphor-icons/react';
+import { CalendarBlankIcon, ImageIcon, MinusIcon, PlusIcon, UserIcon } from '@phosphor-icons/react';
 import { differenceInDays } from 'date-fns';
 import { vi } from 'date-fns/locale';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -22,8 +22,11 @@ const AvatarGenerate = () => {
   const [hours, setHours] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [scale, setScale] = useState(0);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+
 
   const handleImageUpload = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -77,8 +80,36 @@ const AvatarGenerate = () => {
   }
 
   const handleSubmit = () => {
-    setFinalAvatarImage(finalAvatarRef.current!.toDataURL({ pixelRatio: 2.5 }));
-    setFinalCardImage(finalCardRef.current!.toDataURL({ pixelRatio: 2.5 }));
+    // Create a temporary canvas with border radius
+    const avatarCanvas = document.createElement('canvas');
+    const cardCanvas = document.createElement('canvas');
+
+    // Set canvas dimensions
+    avatarCanvas.width = 300;
+    avatarCanvas.height = 300;
+    cardCanvas.width = 500;
+    cardCanvas.height = 900;
+
+    // Get contexts
+    const avatarCtx = avatarCanvas.getContext('2d');
+    const cardCtx = cardCanvas.getContext('2d');
+
+    if (avatarCtx && cardCtx) {
+      // Draw with border radius
+      avatarCtx.beginPath();
+      avatarCtx.roundRect(0, 0, 300, 300, 16);
+      avatarCtx.clip();
+      avatarCtx.drawImage(finalAvatarRef.current!.toCanvas(), 0, 0);
+
+      cardCtx.beginPath();
+      cardCtx.roundRect(0, 0, 500, 900, 16);
+      cardCtx.clip();
+      cardCtx.drawImage(finalCardRef.current!.toCanvas(), 0, 0);
+
+      setFinalAvatarImage(avatarCanvas.toDataURL());
+      setFinalCardImage(cardCanvas.toDataURL());
+    }
+
     setIsSubmit(true);
   }
 
@@ -95,8 +126,12 @@ const AvatarGenerate = () => {
                     <Layer>
                       <KonvaImage
                         image={avatarImage}
-                        width={300}
-                        height={300}
+                        // width={300}
+                        // height={300}
+                        x={0}
+                        y={0}
+                        scaleX={0.1 + scale / 100}
+                        scaleY={0.1 + scale / 100}
                         draggable
                         onMouseEnter={() => {
                           if (selectedImage) {
@@ -112,7 +147,7 @@ const AvatarGenerate = () => {
                   </Stage>
                 </Stack>
 
-                {/* <Stack width={isDownMd ? '290px' : '100%'} direction='row' alignItems='center' justifyContent='center' gap={2}>
+                <Stack width={isDownMd ? '290px' : '100%'} direction='row' alignItems='center' justifyContent='center' gap={2}>
                   <SvgIcon>
                     <MinusIcon fill='white' />
                   </SvgIcon>
@@ -145,7 +180,7 @@ const AvatarGenerate = () => {
                   <SvgIcon>
                     <PlusIcon fill='white' />
                   </SvgIcon>
-                </Stack> */}
+                </Stack>
 
                 <input
                   type="file"
@@ -290,10 +325,10 @@ const AvatarGenerate = () => {
                 <Stage ref={finalCardRef} width={500} height={900}>
                   <Layer>
                     <KonvaImage
-                      width={280}
-                      height={280}
                       x={110}
                       y={140}
+                      scaleX={0.1 + scale / 100 - 0.008}
+                      scaleY={0.1 + scale / 100 - 0.008}
                       image={avatarImage}
                       draggable
                       onMouseEnter={() => {
