@@ -8,7 +8,7 @@ import PreloadImages from './components/PreloadImages';
 
 function App() {
 
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(2);
 
   return (
     <>

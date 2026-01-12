@@ -2,35 +2,35 @@ import { Stack } from '@mui/material';
 
 interface FinalResultProps {
   finalAvatarImage: string;
-  finalCardImage: string;
+  // finalCardImage: string;
   handleBack: () => void;
 }
 
-const FinalResult = ({ finalAvatarImage, finalCardImage, handleBack }: FinalResultProps) => {
+const FinalResult = ({ finalAvatarImage, handleBack }: FinalResultProps) => {
 
   const handleDownloadAvatar = () => {
     const link = document.createElement('a');
     link.href = finalAvatarImage;
-    link.download = 'hexa-20years-avatar.png';
+    link.download = 'hexa-yep-avatar.png';
     link.click();
   }
 
-  const handleDownloadCard = () => {
-    const link = document.createElement('a');
-    link.href = finalCardImage;
-    link.download = 'hexa-20years-card.png';
-    link.click();
-  }
+  // const handleDownloadCard = () => {
+  //   const link = document.createElement('a');
+  //   link.href = finalCardImage;
+  //   link.download = 'hexa-20years-card.png';
+  //   link.click();
+  // }
 
   const handleShareAvatar = () => {
     window.open('https://www.facebook.com', '_blank');
     handleDownloadAvatar();
   }
 
-  const handleShareCard = () => {
-    window.open('https://www.facebook.com', '_blank');
-    handleDownloadCard();
-  }
+  // const handleShareCard = () => {
+  //   window.open('https://www.facebook.com', '_blank');
+  //   handleDownloadCard();
+  // }
 
 
   return (
@@ -67,7 +67,7 @@ const FinalResult = ({ finalAvatarImage, finalCardImage, handleBack }: FinalResu
               </button>
             </Stack>
           </Stack>
-          <Stack alignItems='center' justifyContent='center' gap={3}>
+          {/* <Stack alignItems='center' justifyContent='center' gap={3}>
             <img
               className='md:w-[35vh] w-[50vw] rounded-2xl'
               src={finalCardImage}
@@ -94,7 +94,7 @@ const FinalResult = ({ finalAvatarImage, finalCardImage, handleBack }: FinalResu
                 Tạo ảnh khác
               </button>
             </Stack>
-          </Stack>
+          </Stack> */}
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='center' gap={30} display={{ xs: 'none', md: 'flex' }}>
           <Stack gap={1}>
@@ -117,7 +117,7 @@ const FinalResult = ({ finalAvatarImage, finalCardImage, handleBack }: FinalResu
               Tạo ảnh khác
             </button>
           </Stack>
-          <Stack gap={1}>
+          {/* <Stack gap={1}>
             <button
               onClick={handleDownloadCard}
               className='mt-2 cursor-pointer text-white bg-gradient-to-r from-[#D9442B] to-[#B91F32] text-xl rounded-4xl px-21 py-3 z-101 border-2 border-white'
@@ -136,7 +136,7 @@ const FinalResult = ({ finalAvatarImage, finalCardImage, handleBack }: FinalResu
             >
               Tạo ảnh khác
             </button>
-          </Stack>
+          </Stack> */}
         </Stack>
       </Stack>
     </Stack>

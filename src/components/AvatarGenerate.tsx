@@ -1,16 +1,15 @@
-import { Slider, Stack, SvgIcon, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Slider, Stack, SvgIcon, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { CalendarBlankIcon, ImageIcon, MinusIcon, PlusIcon, UserIcon } from '@phosphor-icons/react';
+import { ImageIcon, MinusIcon, PlusIcon } from '@phosphor-icons/react';
 import { differenceInDays } from 'date-fns';
 import { vi } from 'date-fns/locale';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { Stage as StageType } from 'konva/lib/Stage';
-import { Image as KonvaImage, Layer, Stage, Text } from 'react-konva';
+import { Image as KonvaImage, Layer, Stage } from 'react-konva';
 import useImage from 'use-image';
-import frameAvatarImage from '../assets/frame-avatar.png';
+import frameAvatarImage from '../assets/avatar-frame.png';
 import frameCardImage from '../assets/frame-card.png';
 import FinalResult from './FinalResult';
 
@@ -25,7 +24,6 @@ const AvatarGenerate = () => {
   const [scale, setScale] = useState(0);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-
 
 
   const handleImageUpload = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,22 +90,23 @@ const AvatarGenerate = () => {
 
     // Get contexts
     const avatarCtx = avatarCanvas.getContext('2d');
-    const cardCtx = cardCanvas.getContext('2d');
+    // const cardCtx = cardCanvas.getContext('2d');
 
-    if (avatarCtx && cardCtx) {
+    // if (avatarCtx && cardCtx) {
+    if (avatarCtx) {
       // Draw with border radius
       avatarCtx.beginPath();
       avatarCtx.roundRect(0, 0, 300, 300, 16);
       avatarCtx.clip();
       avatarCtx.drawImage(finalAvatarRef.current!.toCanvas(), 0, 0);
 
-      cardCtx.beginPath();
-      cardCtx.roundRect(0, 0, 500, 900, 16);
-      cardCtx.clip();
-      cardCtx.drawImage(finalCardRef.current!.toCanvas(), 0, 0);
+      // cardCtx.beginPath();
+      // cardCtx.roundRect(0, 0, 500, 900, 16);
+      // cardCtx.clip();
+      // cardCtx.drawImage(finalCardRef.current!.toCanvas(), 0, 0);
 
       setFinalAvatarImage(avatarCanvas.toDataURL());
-      setFinalCardImage(cardCanvas.toDataURL());
+      // setFinalCardImage(cardCanvas.toDataURL());
     }
 
     setIsSubmit(true);
@@ -208,7 +207,7 @@ const AvatarGenerate = () => {
                     <ImageIcon size={26} color='white' weight="fill" />
                   </Stack>
 
-                  <Stack
+                  {/* <Stack
                     direction='row' alignItems='center' justifyContent='space-between'
                     sx={{ borderBottom: '1px solid white', width: { xs: 300, md: 500 }, pb: 1, px: 1, mt: 1.5 }}
                   >
@@ -310,7 +309,7 @@ const AvatarGenerate = () => {
                         },
                       }}
                     />
-                  </Stack>
+                  </Stack> */}
                 </Stack>
 
                 <button
@@ -321,7 +320,7 @@ const AvatarGenerate = () => {
                 </button>
               </Stack>
 
-              <Stack alignItems='center' justifyContent='center' className='border-2 border-white rounded-2xl overflow-hidden'>
+              {/* <Stack alignItems='center' justifyContent='center' className='border-2 border-white rounded-2xl overflow-hidden'>
                 <Stage ref={finalCardRef} width={500} height={900}>
                   <Layer>
                     <KonvaImage
@@ -364,13 +363,13 @@ const AvatarGenerate = () => {
                     />
                   </Layer>
                 </Stage>
-              </Stack>
+              </Stack> */}
             </>
           )}
-          {isSubmit && finalAvatarImage && finalCardImage && (
+          {isSubmit && finalAvatarImage && (
             <FinalResult
               finalAvatarImage={finalAvatarImage}
-              finalCardImage={finalCardImage}
+              // finalCardImage={finalCardImage}
               handleBack={handleBack}
             />
           )}
