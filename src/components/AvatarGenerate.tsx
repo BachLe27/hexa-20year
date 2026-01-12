@@ -2,7 +2,6 @@ import { Slider, Stack, SvgIcon, Typography, useMediaQuery, useTheme } from '@mu
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { ImageIcon, MinusIcon, PlusIcon } from '@phosphor-icons/react';
-import { differenceInDays } from 'date-fns';
 import { vi } from 'date-fns/locale';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -10,16 +9,15 @@ import type { Stage as StageType } from 'konva/lib/Stage';
 import { Image as KonvaImage, Layer, Stage } from 'react-konva';
 import useImage from 'use-image';
 import frameAvatarImage from '../assets/avatar-frame.png';
-import frameCardImage from '../assets/frame-card.png';
 import FinalResult from './FinalResult';
 
 const AvatarGenerate = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const [userName, setUserName] = useState('');
-  const [joinDate, setJoinDate] = useState<Date | null>(null);
-  const [hours, setHours] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
+  // const [userName, setUserName] = useState('');
+  // const [joinDate, setJoinDate] = useState<Date | null>(null);
+  // const [hours, setHours] = useState<string | null>(null);
+  // const [open, setOpen] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
   const [scale, setScale] = useState(0);
 
@@ -48,30 +46,30 @@ const AvatarGenerate = () => {
   }
 
   const [frameAvatar] = useImage(frameAvatarImage);
-  const [frameCard] = useImage(frameCardImage);
+  // const [frameCard] = useImage(frameCardImage);
 
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down('md'));
 
-  useEffect(() => {
-    if (joinDate) {
-      const currentDate = new Date();
-      const hourDiff = 24 * Number(differenceInDays(currentDate, joinDate));
-      if (hourDiff > 0) {
-        setHours(`${hourDiff} giờ`);
-      } else {
-        setHours(`0 giờ`);
-      }
-    } else {
-      setHours(null);
-    }
-  }, [joinDate]);
+  // useEffect(() => {
+  //   if (joinDate) {
+  //     const currentDate = new Date();
+  //     const hourDiff = 24 * Number(differenceInDays(currentDate, joinDate));
+  //     if (hourDiff > 0) {
+  //       setHours(`${hourDiff} giờ`);
+  //     } else {
+  //       setHours(`0 giờ`);
+  //     }
+  //   } else {
+  //     setHours(null);
+  //   }
+  // }, [joinDate]);
 
   const finalAvatarRef = useRef<StageType>(null);
-  const finalCardRef = useRef<StageType>(null);
+  // const finalCardRef = useRef<StageType>(null);
 
   const [finalAvatarImage, setFinalAvatarImage] = useState<string | null>(null);
-  const [finalCardImage, setFinalCardImage] = useState<string | null>(null);
+  // const [finalCardImage, setFinalCardImage] = useState<string | null>(null);
 
   const handleBack = () => {
     setIsSubmit(false);
